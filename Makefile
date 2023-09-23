@@ -165,3 +165,99 @@ SDK/output/.config:
 	@$(call MESSAGE,"Configure SDK")
 	@mkdir -p SDK/board/funkey/patches
 	@$(BR) BR2_EXTERNAL=../SDK O=../SDK/output funkey_defconfig
+
+sdk_menuconfig:
+	@$(call MESSAGE,"Menuconfig for SDK")
+	@$(BR) BR2_EXTERNAL=../SDK O=../SDK/output menuconfig
+
+sdk_defconfig:
+	@$(call MESSAGE,"Updating Default configs in SDK")
+	@$(BR) BR2_EXTERNAL=../SDK O=../SDK/output savedefconfig
+
+rec_menuconfig:
+	@$(call MESSAGE,"Menuconfig for Recovery")
+	@$(BR) BR2_EXTERNAL=../Recovery O=../Recovery/output menuconfig
+
+rec_menuconfig_uboot:
+	@$(call MESSAGE,"Menuconfig Uboot for Recovery")
+	@$(BR) BR2_EXTERNAL=../Recovery O=../Recovery/output uboot-menuconfig
+
+rec_menuconfig_linux:
+	@$(call MESSAGE,"Menuconfig Kernel for Recovery")
+	@$(BR) BR2_EXTERNAL=../Recovery O=../Recovery/output linux-menuconfig
+
+rec_menuconfig_busybox:
+	@$(call MESSAGE,"Menuconfig Busybox for Recovery")
+	@$(BR) BR2_EXTERNAL=../Recovery O=../Recovery/output busybox-menuconfig
+
+rec_defconfig:
+	@$(call MESSAGE,"Updating Default configs in Recovery")
+	@$(BR) BR2_EXTERNAL=../Recovery O=../Recovery/output savedefconfig
+
+rec_defconfig_all:
+	@$(call MESSAGE,"Updating All Default configs in Recovery")
+	@$(BR) BR2_EXTERNAL=../Recovery O=../Recovery/output savedefconfig linux-update-defconfig busybox-update-config
+
+rec_defconfig_uboot:
+	@$(call MESSAGE,"Updating Uboot configs in Recovery")
+	@$(BR) BR2_EXTERNAL=../Recovery O=../Recovery/output uboot-update-config
+
+rec_defconfig_linux:
+	@$(call MESSAGE,"Updating Kernel configs in Recovery")
+	@$(BR) BR2_EXTERNAL=../Recovery O=../Recovery/output linux-update-defconfig
+
+rec_defconfig_busybox:
+	@$(call MESSAGE,"Updating Busybox configs in Recovery")
+	@$(BR) BR2_EXTERNAL=../Recovery O=../Recovery/output busybox-update-config
+
+rec_rebuild_uboot:
+	@$(call MESSAGE,"Rebuild Uboot for Recovery")
+	@$(BR) BR2_EXTERNAL=../Recovery O=../Recovery/output uboot-rebuild
+	@make image
+
+rec_rebuild_linux:
+	@$(call MESSAGE,"Rebuild Linux for Recovery")
+	@touch Recovery/output/images/a.dtb
+	@rm Recovery/output/images/*.dtb
+	@$(BR) BR2_EXTERNAL=../Recovery O=../Recovery/output linux-rebuild
+	@make image
+
+fun_defconfig:
+	@$(call MESSAGE,"Updating Default configs in FunKey")
+	@$(BR) BR2_EXTERNAL=../FunKey O=../FunKey/output savedefconfig
+
+fun_defconfig_all:
+	@$(call MESSAGE,"Updating Default configs in FunKey")
+	@$(BR) BR2_EXTERNAL=../FunKey O=../FunKey/output savedefconfig linux-update-defconfig busybox-update-config
+
+fun_defconfig_linux:
+	@$(call MESSAGE,"Updating Linux configs in FunKey")
+	@$(BR) BR2_EXTERNAL=../FunKey O=../FunKey/output linux-update-defconfig
+
+fun_defconfig_busybox:
+	@$(call MESSAGE,"Updating Busybox configs in FunKey")
+	@$(BR) BR2_EXTERNAL=../FunKey O=../FunKey/output busybox-update-config
+
+fun_menuconfig:
+	@$(call MESSAGE,"Menuconfig for FunKey")
+	@$(BR) BR2_EXTERNAL=../FunKey O=../FunKey/output menuconfig
+
+fun_menuconfig_linux:
+	@$(call MESSAGE,"Menuconfig Kernel for FunKey")
+	@$(BR) BR2_EXTERNAL=../FunKey O=../FunKey/output linux-menuconfig
+
+fun_menuconfig_busybox:
+	@$(call MESSAGE,"Menuconfig Busybox for FunKey")
+	@$(BR) BR2_EXTERNAL=../FunKey O=../FunKey/output busybox-menuconfig
+
+fun_rebuild_linux:
+	@$(call MESSAGE,"Rebuild Linux for FunKey")
+	@touch FunKey/output/images/a.dtb
+	@rm FunKey/output/images/*.dtb
+	@$(BR) BR2_EXTERNAL=../FunKey O=../FunKey/output linux-rebuild
+	@make image
+
+fun_rebuild_busybox:
+	@$(call MESSAGE,"Rebuild Busybox for FunKey")
+	@$(BR) BR2_EXTERNAL=../FunKey O=../FunKey/output busybox-rebuild
+	@make image
