@@ -53,13 +53,13 @@ buildroot/.git:
 fun: buildroot Recovery/output/.config FunKey/output/.config
 	@$(call MESSAGE,"Making fun")
 	@$(call MESSAGE,"Making fun in Recovery")
-	@$(BRMAKE) BR2_EXTERNAL=../Recovery O=../Recovery/output
+	@$(BRMAKE) BR2_EXTERNAL=../Recovery O=../Recovery/output -j$(expr $(nproc) / 2)
 	@$(call MESSAGE,"Making fun in FunKey")
-	@$(BRMAKE) BR2_EXTERNAL=../FunKey O=../FunKey/output
+	@$(BRMAKE) BR2_EXTERNAL=../FunKey O=../FunKey/output -j$(expr $(nproc) / 2)
 
 sdk: buildroot SDK/output/.config
 	@$(call MESSAGE,"Making FunKey SDK")
-	@$(BRMAKE) BR2_EXTERNAL=../SDK O=../SDK/output prepare-sdk
+	@$(BRMAKE) BR2_EXTERNAL=../SDK O=../SDK/output prepare-sdk -j$(expr $(nproc) / 2)
 	@$(call MESSAGE,"Generating SDK tarball")
 	@export LC_ALL=C; \
 	SDK=FunKey-sdk-DrUm78; \
