@@ -19,6 +19,7 @@
 
 BRMAKE = buildroot/utils/brmake -C buildroot
 BR = make -C buildroot
+BRMAKE_THREAD = $(shell expr $(shell nproc) - 1)
 
 # Strip quotes and then whitespaces
 qstrip = $(strip $(subst ",,$(1)))
@@ -53,13 +54,13 @@ buildroot/.git:
 fun: buildroot Recovery/output/.config FunKey/output/.config
 	@$(call MESSAGE,"Making fun")
 	@$(call MESSAGE,"Making fun in Recovery")
-	@$(BRMAKE) BR2_EXTERNAL=../Recovery O=../Recovery/output -j$(expr $(nproc) / 2)
+	@$(BRMAKE) BR2_EXTERNAL=../Recovery O=../Recovery/output -j$(BRMAKE_THREAD)
 	@$(call MESSAGE,"Making fun in FunKey")
-	@$(BRMAKE) BR2_EXTERNAL=../FunKey O=../FunKey/output -j$(expr $(nproc) / 2)
+	@$(BRMAKE) BR2_EXTERNAL=../FunKey O=../FunKey/output -j$(BRMAKE_THREAD)
 
 sdk: buildroot SDK/output/.config
 	@$(call MESSAGE,"Making FunKey SDK")
-	@$(BRMAKE) BR2_EXTERNAL=../SDK O=../SDK/output prepare-sdk -j$(expr $(nproc) / 2)
+	@$(BRMAKE) BR2_EXTERNAL=../SDK O=../SDK/output prepare-sdk -j$(BRMAKE_THREAD)
 	@$(call MESSAGE,"Generating SDK tarball")
 	@export LC_ALL=C; \
 	SDK=FunKey-sdk-DrUm78; \
