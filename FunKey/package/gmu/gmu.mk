@@ -16,6 +16,9 @@ define GMU_BUILD_CMDS
 	(cd $(@D); \
 	sed -i -e 's|rm -rf|#rm -rf|g' package; \
 	sed -i -e 's|make -f Makefile.funkey clean|#make -f Makefile.funkey clean|g' package; \
+	sed -i -n '61i LIBS+=$(LIBS_SDLFE)' Makefile.funkey; \
+	sed -i -e 's|/opt/FunKey-sdk/bin/arm-funkey-linux-musleabihf-gcc|../../host/usr/bin/arm-linux-gcc|g' funkey.mk; \
+	sed -i -e 's|/opt/FunKey-sdk/arm-funkey-linux-musleabihf/sysroot|../../host/arm-funkey-linux-musleabihf/sysroot|g' funkey.mk; \
 	chmod +x package; \
 	./package \
 	)
