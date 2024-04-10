@@ -3,7 +3,6 @@ config BR2_PACKAGE_GMU
 	default y
 	select BR2_PACKAGE_SDL
 	help
-	A multi-format music player
-
+	  A multi-format music player
 
 	  https://github.com/jhe2/gmu

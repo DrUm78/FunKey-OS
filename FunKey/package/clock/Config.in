@@ -3,7 +3,6 @@ config BR2_PACKAGE_CLOCK
 	default y
 	select BR2_PACKAGE_SDL
 	help
-	This is a simple app that sets the clock.
-
+	  This is a simple app that sets the clock.
 
 	  https://github.com/gameblabla/clock_sdl_app

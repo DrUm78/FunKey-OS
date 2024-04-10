@@ -6,7 +6,7 @@
 rw
 mv -f /etc/asound.conf /etc/asound.conf.BAK
 cd ${HOME}
-gpsp "$1"&
+picoarch /mnt/Libretro/cores/gpsp_libretro.so "$1"&
 pid record $!
 wait $!
 pid erase
