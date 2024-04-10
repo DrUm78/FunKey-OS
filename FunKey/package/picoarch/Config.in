@@ -5,7 +5,6 @@ config BR2_PACKAGE_PICOARCH
 	select BR2_PACKAGE_SDL_IMAGE
 	select BR2_PACKAGE_SDL_TTF
 	help
-	A Libretro frontend designed for small screens and low power
-
+	  A Libretro frontend designed for small screens and low power
 
 	  https://git.crowdedwood.com/picoarch

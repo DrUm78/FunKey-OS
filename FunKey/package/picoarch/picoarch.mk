@@ -43,7 +43,17 @@ endef
 
 define PICOARCH_CREATE_OPK
 	$(INSTALL) -d -m 0755 $(TARGET_DIR)/usr/local/share/OPKs/Libretro
-	$(HOST_DIR)/usr/bin/mksquashfs $(PICOARCH_PKGDIR)/opk $(TARGET_DIR)/usr/local/share/OPKs/Libretro/picoarch_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
+	$(HOST_DIR)/usr/bin/mksquashfs $(PICOARCH_PKGDIR)/opk/picoarch $(TARGET_DIR)/usr/local/share/OPKs/Libretro/picoarch_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
+	$(HOST_DIR)/usr/bin/mksquashfs $(PICOARCH_PKGDIR)/opk/gb_gbc $(TARGET_DIR)/usr/local/share/OPKs/Libretro/gb_gbc_picoarch_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
+	$(HOST_DIR)/usr/bin/mksquashfs $(PICOARCH_PKGDIR)/opk/gba $(TARGET_DIR)/usr/local/share/OPKs/Libretro/gba_picoarch_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
+	$(HOST_DIR)/usr/bin/mksquashfs $(PICOARCH_PKGDIR)/opk/lynx $(TARGET_DIR)/usr/local/share/OPKs/Libretro/lynx_picoarch_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
+	$(HOST_DIR)/usr/bin/mksquashfs $(PICOARCH_PKGDIR)/opk/megadrive $(TARGET_DIR)/usr/local/share/OPKs/Libretro/megadrive_picoarch_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
+	$(HOST_DIR)/usr/bin/mksquashfs $(PICOARCH_PKGDIR)/opk/nes $(TARGET_DIR)/usr/local/share/OPKs/Libretro/nes_picoarch_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
+	$(HOST_DIR)/usr/bin/mksquashfs $(PICOARCH_PKGDIR)/opk/ngp $(TARGET_DIR)/usr/local/share/OPKs/Libretro/ngp_picoarch_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
+	$(HOST_DIR)/usr/bin/mksquashfs $(PICOARCH_PKGDIR)/opk/pce $(TARGET_DIR)/usr/local/share/OPKs/Libretro/pce_picoarch_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
+	$(HOST_DIR)/usr/bin/mksquashfs $(PICOARCH_PKGDIR)/opk/ps1 $(TARGET_DIR)/usr/local/share/OPKs/Libretro/ps1_picoarch_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
+	$(HOST_DIR)/usr/bin/mksquashfs $(PICOARCH_PKGDIR)/opk/snes $(TARGET_DIR)/usr/local/share/OPKs/Libretro/snes_picoarch_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
+	$(HOST_DIR)/usr/bin/mksquashfs $(PICOARCH_PKGDIR)/opk/wonderswan $(TARGET_DIR)/usr/local/share/OPKs/Libretro/wonderswan_picoarch_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
 endef
 PICOARCH_POST_INSTALL_TARGET_HOOKS += PICOARCH_CREATE_OPK
 
