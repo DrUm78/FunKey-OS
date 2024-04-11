@@ -1,9 +1,0 @@
-config BR2_PACKAGE_GMU
-	bool "gmu"
-	default y
-	select BR2_PACKAGE_SDL
-	help
-	A multi-format music player
-
-
-	  https://github.com/jhe2/gmu
