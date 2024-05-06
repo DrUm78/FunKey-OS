@@ -50,11 +50,17 @@ do_postinst()
     # Copy freeware games and other necessary mnt files
     unzip -q -o ${root_mount}/usr/local/share/mnt_files.zip -d /mnt/
 
-    # Fix PCE opk name if necessary
-    #mv /mnt/Emulators/pce_mednaefn_funkey-s.opk /mnt/Emulators/pce_mednafen_funkey-s.opk 1>/dev/null 2>&1
-
-    # Remove separate GB and GBC OPKs (now using one single GB/GBC instead)
-    rm /mnt/Emulators/gb_gnuboy_funkey-s.opk /mnt/Emulators/gbc_gnuboy_funkey-s.opk
+    # Remove previous OPKs for default emulators
+    rm /mnt/Emulators/gb_gbc_gnuboy_funkey-s.opk
+    rm /mnt/Emulators/gba_gpsp_funkey-s.opk
+    rm /mnt/Emulators/lynx_mednafen_funkey-s.opk
+    rm /mnt/Emulators/megadrive_picodrive_funkey-s.opk
+    rm /mnt/Emulators/nes_fceux_funkey-s.opk
+    rm /mnt/Emulators/ngp_mednafen_funkey-s.opk
+    rm /mnt/Emulators/pce_mednafen_funkey-s.opk
+    rm /mnt/Emulators/ps1_pcsx_funkey-s.opk
+    rm /mnt/Emulators/snes_pocketsnes_funkey-s.opk
+    rm /mnt/Emulators/wonderswan_mednafen_funkey-s.opk
 
     # Unmount Rootfs
     umount ${root_mount}
@@ -62,16 +68,6 @@ do_postinst()
         notif_set 0 "CANNOT UNMOUNT ROOT^FILESYSTEM"
         exit 1
     fi
-
-    # Change FunKey config files extension from .cfg to .fkcfg
-    #SAVEIFS=$IFS
-    #IFS=$(echo -en "\n\b")
-    #for FOLDER in "Atari lynx" "Game Boy" "Game Boy Advance" "Game Boy Color" "Game Gear" "Neo Geo Pocket" "NES" "PCE-TurboGrafx" "PS1" "Sega Genesis" "Sega Master System" "SNES" "WonderSwan"; do
-    #    for FILE in $(ls /mnt/"${FOLDER}"/*.cfg 2>/dev/null); do
-    #        mv "$FILE" "${FILE%.cfg}.fkcfg"
-    #    done
-    #done
-    #IFS=$SAVEIFS
 
     #####################
     # Erase update file #
