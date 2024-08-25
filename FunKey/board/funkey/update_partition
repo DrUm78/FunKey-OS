@@ -61,6 +61,7 @@ do_postinst()
     rm /mnt/Emulators/ps1_pcsx_funkey-s.opk
     rm /mnt/Emulators/snes_pocketsnes_funkey-s.opk
     rm /mnt/Emulators/wonderswan_mednafen_funkey-s.opk
+    rm /mnt/Applications/commander-funkey-s.opk
 
     # Unmount Rootfs
     umount ${root_mount}
