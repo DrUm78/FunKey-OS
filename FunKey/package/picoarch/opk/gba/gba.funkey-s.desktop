@@ -5,4 +5,4 @@ Icon=gba
 Exec=/usr/games/launchers/gba_launch_gpsp.sh %f
 Categories=emulators
 SelectorDir=/mnt/Game Boy Advance
-SelectorFilter=gba,GBA,zip,ZIP
+SelectorFilter=gba,bin,agb,gbz,u1,zip
