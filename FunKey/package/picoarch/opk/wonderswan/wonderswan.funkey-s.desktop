@@ -5,4 +5,4 @@ Icon=wonderswan
 Exec=/usr/games/launchers/wonderswan_launch.sh %f
 Categories=emulators
 SelectorDir=/mnt/WonderSwan
-SelectorFilter=zip,ZIP,wsc,WSC,ws,WS
+SelectorFilter=ws,wsc,pc2,zip

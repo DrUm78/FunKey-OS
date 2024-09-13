@@ -5,4 +5,4 @@ Icon=megadrive
 Exec=/usr/games/launchers/megadrive_launch.sh %f
 Categories=emulators
 SelectorDir=/mnt/Sega Genesis
-SelectorFilter=zip,ZIP,md,MD,bin,BIN,32x,32X,cue,CUE,cso,CSO,chd,CHD,smd,SMD,gg,GG,sg,SG,sms,SMS
+SelectorFilter=bin,gen,smd,md,32x,cue,iso,chd,cso,sms,gg,sg,sc,m3u,68k,sgd,pco,zip

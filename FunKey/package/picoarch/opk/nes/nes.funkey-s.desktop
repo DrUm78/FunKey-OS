@@ -5,4 +5,4 @@ Icon=nes
 Exec=/usr/games/launchers/nes_launch.sh %f
 Categories=emulators
 SelectorDir=/mnt/NES
-SelectorFilter=nes,NES,fds,FDS,zip,ZIP
+SelectorFilter=fds,nes,unf,unif,zip
