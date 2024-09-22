@@ -1,0 +1,13 @@
+diff --git a/plat_sdl.c b/plat_sdl.c
+index 398cf1f..2d020ce 100644
+--- a/plat_sdl.c
++++ b/plat_sdl.c
+@@ -242,7 +242,7 @@ void plat_video_process(const void *data, unsigned width, unsigned height, size_
+ 		had_msg = 0;
+ 	}
+ 
+-	scale(width, height, pitch, data, screen->pixels);
++	scale(width, height, pitch, data, screen->pixels + 10 * SCREEN_WIDTH * SCREEN_BPP);
+ 
+ 	if (msg[0]) {
+ 		video_print_msg(screen->pixels, screen->h, screen->pitch / SCREEN_BPP, msg);
