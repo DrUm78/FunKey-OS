@@ -13,7 +13,7 @@
     <image src="images/background.png" x="0" y="0" height="stretch" width="stretch" layer="0"/>
 
     <!--Battery-->
-    <battery reloadPeriod="3" fontColor="ffffff" alpha="0" x="right" xOrigin="right" xOffset="-5" y="top" yOrigin="center" yOffset="13" layer="14" >
+    <battery reloadPeriod="3" fontColor="ffffff" alpha="0" x="right" xOrigin="right" xOffset="-5" y="top" yOrigin="center" yOffset="63" layer="14" >
         <onEnter>                   <set duration=".3"><animate type="alpha" to="1"/></set></onEnter>
         <onExit>                   <set duration=".3"><animate type="alpha" to="0"/></set></onExit>
         <onMenuEnter menuIndex="0"><set duration=".3"><animate type="alpha" to="1"/></set></onMenuEnter>

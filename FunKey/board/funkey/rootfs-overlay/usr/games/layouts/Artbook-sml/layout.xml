@@ -144,7 +144,7 @@
 
     <!--Scrollable game title idx 0-->
     <!-- Since we chose the sub menu to display the artwork and not the title, we add here a reloadableTex that will do the job of displaying the title of the game. Notice that this is a special type of reloadableText: a reloadableScrollingText which allows the title to scroll if its size is bigger than its container -->
-    <reloadableScrollingText type="title" alpha="0" x="center" xOrigin="center" xOffset="0" y="bottom" yOrigin="center" yOffset="-17" width="193" height="33" menuScrollReload="true" fontSize="14" loadFontSize="14" fontColor="ffffff" direction="horizontal" scrollingSpeed="60" startPosition="0" startTime="1.5" endTime="1.5" layer="13" >
+    <reloadableScrollingText type="title" alpha="0" x="center" xOrigin="center" xOffset="0" y="bottom" yOrigin="center" yOffset="-37" width="193" height="33" menuScrollReload="true" fontSize="14" loadFontSize="14" fontColor="ffffff" direction="horizontal" scrollingSpeed="60" startPosition="0" startTime="1.5" endTime="1.5" layer="13" >
         <onExit>                   <set duration=".3"><animate type="alpha" to="0"/></set></onExit>
         <onMenuEnter menuIndex="1"><set duration=".3"><animate type="alpha" to="1"/></set></onMenuEnter>
         <onMenuExit  menuIndex="1"><set duration=".3"><animate type="alpha" to="0"/></set></onMenuExit>
@@ -166,7 +166,7 @@
 
     <!--Game cover idx 0 -->
     <!-- This is yet again the curently selected game title but not reloadable. It is displayed only when scrolling through games. For a smooth animation, the above reloadableScrollingText is not displayed when scrolling and this one is instead. Notice how tha alpha is set to 1 for the onMenuScrollNext and onMenuScrollPrev events. Notice also the onMenuScroll and onMenuFastScroll animations that will move this text according to the submenu's speed and acceleration. This creates a smooth scrolling effect, like if this text was part of the submenu -->    
-    <reloadableText type="title" selectedOffset="0" alpha="0" x="center" xOrigin="center" xOffset="0" y="bottom" yOrigin="center" yOffset="-17" width="193" menuScrollReload="true" fontSize="14" loadFontSize="14" fontColor="ffffff" layer="14" >
+    <reloadableText type="title" selectedOffset="0" alpha="0" x="center" xOrigin="center" xOffset="0" y="bottom" yOrigin="center" yOffset="-37" width="193" menuScrollReload="true" fontSize="14" loadFontSize="14" fontColor="ffffff" layer="14" >
         <onExit>                   <set duration=".3"><animate type="alpha" to="0"/></set></onExit>
         <onMenuEnter menuIndex="1"><set duration=".3"><animate type="alpha" to="0"/></set></onMenuEnter>
         <onMenuExit  menuIndex="1"><set duration=".3"><animate type="alpha" to="0"/></set></onMenuExit>
@@ -205,7 +205,7 @@
 
     <!-- Game cover idx -1 -->
     <!-- This is the text of the previous game in the list (selectedOffset="-1"). This is only displayed during scrolling animations so that we can see the previous game's name smoothly entering the screen from the left -->
-    <reloadableText type="title" selectedOffset="-1" alpha="0" x="center" xOrigin="center" xOffset="-240" y="bottom" yOrigin="center" yOffset="-17" width="193" menuScrollReload="true" fontSize="14" loadFontSize="14" fontColor="ffffff" layer="14" >
+    <reloadableText type="title" selectedOffset="-1" alpha="0" x="center" xOrigin="center" xOffset="-240" y="bottom" yOrigin="center" yOffset="-37" width="193" menuScrollReload="true" fontSize="14" loadFontSize="14" fontColor="ffffff" layer="14" >
         
         <onExit>                   <set duration=".3"><animate type="alpha" to="0"/></set></onExit>
         <onMenuEnter menuIndex="1"><set duration=".3"><animate type="alpha" to="1"/></set></onMenuEnter>
@@ -232,7 +232,7 @@
 
     <!--Game cover idx +1 -->
     <!-- This is the text of the next game in the list (selectedOffset="1"). This is only displayed during scrolling animations so that we can see the next game's name smoothly entering the screen from the right -->
-    <reloadableText type="title" selectedOffset="1" alpha="0" x="center" xOrigin="center" xOffset="240" y="bottom" yOrigin="center" yOffset="-17" width="193" menuScrollReload="true" fontSize="14" loadFontSize="14" fontColor="ffffff" layer="14" >
+    <reloadableText type="title" selectedOffset="1" alpha="0" x="center" xOrigin="center" xOffset="240" y="bottom" yOrigin="center" yOffset="-37" width="193" menuScrollReload="true" fontSize="14" loadFontSize="14" fontColor="ffffff" layer="14" >
         
         <onExit>                   <set duration=".3"><animate type="alpha" to="0"/></set></onExit>
         <onMenuEnter menuIndex="1"><set duration=".3"><animate type="alpha" to="1"/></set></onMenuEnter>
@@ -271,7 +271,7 @@
 
 
     <!--Battery in status bar-->
-    <battery reloadPeriod="3" fontColor="ffffff" alpha="0.3" x="right" xOrigin="right" xOffset="-5" y="top" yOrigin="center" yOffset="13" layer="17" ></battery>
+    <battery reloadPeriod="3" fontColor="ffffff" alpha="0.3" x="right" xOrigin="right" xOffset="-5" y="top" yOrigin="center" yOffset="63" layer="17" ></battery>
 
 
 
