@@ -18,11 +18,11 @@ case "$1" in
 	    for file in ${updates} ; do
 		swupdate -i "${file}"
 		if [ $? -ne 0 ]; then
-	            notif display 10 "         CORRUPTED^        UPDATE FILE"
+	            notif display 10 "        CORRUPTED^        UPDATE FILE"
 		    rm -f "${file}"
 		fi
 	    done
-	    notif set 0 "^^^^^^^^      RESTARTING...^^^^^^^^"
+	    notif set 0 "^^^^^       RESTARTING...^^^^^^^^"
 	    normal_mode
 	else
 

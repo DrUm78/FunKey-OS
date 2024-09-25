@@ -13,7 +13,7 @@ usage() {
 
 # Check number of arguments
 if [ ${#} -eq 1 -a "${1}" = "toggle" ]; then
-    notif set 0 " ^^^Getting system stats..."
+    notif set 0 "Getting system stats..."
     killall -s USR1 "${SELF}"
     exit 0
 elif [ ${#} -ne 0 ]; then
@@ -50,9 +50,9 @@ while true; do
 	    notif_dirty=0
 	else
 	    if [ "x${ip_addr}" != "x" ]; then
-		notif set 0 "^^^CPU:${cpu} RAM:${ram_mem} TEMP:${temp} BAT:${battery}^IP:${ip_addr}"
+		notif set 0 "CPU:${cpu} RAM:${ram_mem} TEMP:${temp} BAT:${battery}^IP:${ip_addr}"
 	    else
-		notif set 0 "^^^CPU:${cpu} RAM:${ram_mem} TEMP:${temp} BAT:${battery}"
+		notif set 0 "CPU:${cpu} RAM:${ram_mem} TEMP:${temp} BAT:${battery}"
 	    fi
 	fi
     else

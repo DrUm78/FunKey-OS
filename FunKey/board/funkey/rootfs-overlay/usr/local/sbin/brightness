@@ -33,7 +33,7 @@ increase_brightness() {
     fi
 
     # Notif
-    notif set ${NOTIF_DURATION} "       ^^^BRIGHTNESS: ${new_brightness}%%"
+    notif set ${NOTIF_DURATION} "      BRIGHTNESS: ${new_brightness}%%"
 }
 
 decrease_brightness() {
@@ -53,7 +53,7 @@ decrease_brightness() {
     fi
 
     # Notif
-    notif set ${NOTIF_DURATION} "       ^^^BRIGHTNESS: ${new_brightness}%%"
+    notif set ${NOTIF_DURATION} "      BRIGHTNESS: ${new_brightness}%%"
 }
 
 get_brightness() {
