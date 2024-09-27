@@ -1,0 +1,54 @@
+diff --git a/scale.c b/scale.c
+index 5857589..c920107 100644
+--- a/scale.c
++++ b/scale.c
+@@ -477,18 +477,24 @@ static void scale_select_scaler(unsigned w, unsigned h, size_t pitch) {
+ 		dst_offs = dst_y * SCREEN_PITCH + dst_x * SCREEN_BPP;
+ 	} else if (scale_size == SCALE_SIZE_FULL) {
+ 		dst_w = SCREEN_WIDTH;
+-		dst_h = SCREEN_HEIGHT;
+-		dst_offs = 0;
++		dst_h = 160;
++		unsigned dst_x = ((SCREEN_WIDTH - dst_w) / 2) * SCREEN_BPP;
++		unsigned dst_y = ((SCREEN_HEIGHT - dst_h) / 2);
++		dst_offs = dst_y * SCREEN_PITCH + dst_x;
+ 	} else if (scale_size == SCALE_SIZE_ASPECT ||
+ 	           (scale_size == SCALE_SIZE_NONE && (w > SCREEN_WIDTH || h > SCREEN_HEIGHT))) {
+ 		dst_w = SCREEN_WIDTH;
+ 		dst_h = SCREEN_WIDTH / current_aspect_ratio + 0.5;
+-		dst_offs = ((SCREEN_HEIGHT-dst_h)/2) * SCREEN_PITCH;
++		unsigned dst_x = ((SCREEN_WIDTH - dst_w) / 2) * SCREEN_BPP;
++		unsigned dst_y = ((SCREEN_HEIGHT - dst_h) / 2);
++		dst_offs = dst_y * SCREEN_PITCH + dst_x;
+ 
+-		if (dst_h > SCREEN_HEIGHT) {
+-			dst_w = SCREEN_HEIGHT * current_aspect_ratio + 0.5;
+-			dst_h = SCREEN_HEIGHT;
+-			dst_offs = ((SCREEN_WIDTH-dst_w)/2) * SCREEN_BPP;
++		if (dst_h > 160) {
++			dst_w = 160 * current_aspect_ratio + 0.5;
++			dst_h = 160;
++			unsigned dst_x = ((SCREEN_WIDTH - dst_w) / 2) * SCREEN_BPP;
++			unsigned dst_y = ((SCREEN_HEIGHT - dst_h) / 2);
++			dst_offs = dst_y * SCREEN_PITCH + dst_x;
+ 		}
+ 	} else if (scale_size == SCALE_SIZE_NONE) {
+ 		unsigned dst_x = ((SCREEN_WIDTH - w) * SCREEN_BPP / 2);
+@@ -504,7 +510,7 @@ static void scale_select_scaler(unsigned w, unsigned h, size_t pitch) {
+ 		return;
+ 	}
+ 
+-	if (!scaler && w == 160 && h == 144) {
++	/*if (!scaler && w == 160 && h == 144) {
+ 		if (scale_size == SCALE_SIZE_ASPECT && scale_filter == SCALE_FILTER_SHARP) {
+ 			unsigned dst_x = ((SCREEN_WIDTH - 240) * SCREEN_BPP / 2);
+ 			unsigned dst_y = ((SCREEN_HEIGHT - 216) / 2);
+@@ -513,7 +519,7 @@ static void scale_select_scaler(unsigned w, unsigned h, size_t pitch) {
+ 			scaler = scale_sharp_160x144_240x216;
+ 			return;
+ 		}
+-	}
++	}*/
+ 
+ 	if (SCREEN_WIDTH == 320 && scale_filter == SCALE_FILTER_SHARP) {
+ 		if (!scaler && w == 240 && h == 160) {
