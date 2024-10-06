@@ -22,11 +22,15 @@ define GMU_BUILD_CMDS
 endef
 
 define GMU_INSTALL_TARGET_CMDS
-	$(INSTALL) -d -m 0755 $(TARGET_DIR)/usr/bin/gmu/decoders
-	$(INSTALL) -d -m 0755 $(TARGET_DIR)/usr/bin/gmu/frontends
-	$(INSTALL) -m 0755 $(@D)/opk/gmu $(TARGET_DIR)/usr/bin/gmu
-	$(INSTALL) -m 0755 $(@D)/opk/decoders/* $(TARGET_DIR)/usr/bin/gmu/decoders
-	$(INSTALL) -m 0755 $(@D)/opk/frontends/* $(TARGET_DIR)/usr/bin/gmu/frontends
+	$(INSTALL) -d -m 0755 $(TARGET_DIR)/usr/bin/gmu
+	$(INSTALL) -D -m 0755 -t $(TARGET_DIR)/usr/bin/gmu $(@D)/gmu
+	$(INSTALL) -D -m 0755 -t $(TARGET_DIR)/usr/bin/gmu $(@D)/opk/*
+	$(INSTALL) -D -m 0755 -t $(TARGET_DIR)/usr/bin/gmu/decoders $(@D)/decoders/*
+	$(INSTALL) -D -m 0755 -t $(TARGET_DIR)/usr/bin/gmu/frontends $(@D)/frontends/*
+	$(INSTALL) -D -m 0755 -t $(TARGET_DIR)/usr/bin/gmu/themes/dbcompo-small $(@D)/themes/dbcompo-small/*
+	$(INSTALL) -D -m 0755 -t $(TARGET_DIR)/usr/bin/gmu/themes/dbcompo-large $(@D)/themes/dbcompo-large/*
+	$(INSTALL) -D -m 0755 -t $(TARGET_DIR)/usr/bin/gmu/themes/default-modern-small $(@D)/themes/default-modern-small/*
+	$(INSTALL) -D -m 0755 -t $(TARGET_DIR)/usr/bin/gmu/themes/default-modern-large $(@D)/themes/default-modern-large/*
 endef
 
 define GMU_CREATE_OPK

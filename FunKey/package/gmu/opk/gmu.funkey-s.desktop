@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=GMU
+Name=Gmu
 Comment=A multi-format music player
 Exec=/usr/bin/gmu/gmu.dge
 Icon=gmu
