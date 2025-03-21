@@ -5,8 +5,11 @@
 # Do not use asound.conf to avoid saturated sound
 rw
 mv -f /etc/asound.conf /etc/asound.conf.BAK
-cd ${HOME}
-picoarch /mnt/Libretro/cores/gpsp_libretro.so "$1"&
+if [ -e /mnt/Libretro/cores/gpsp_libretro.so ]; then
+	picoarch /mnt/Libretro/cores/gpsp_libretro.so "$1"&
+else
+	picoarch /usr/games/gpsp_libretro.so "$1"&
+fi
 pid record $!
 wait $!
 pid erase
