@@ -105,7 +105,7 @@ image: fun
 	@mkdir -p root tmp
 	@./Recovery/output/host/bin/genimage --loglevel 0 --inputpath .
 	@rm -rf root tmp
-	@mv images/sdcard.img images/FunKey-sdcard-DrUm78.img
+	@mv images/sdcard.img images/FunKey-sdcard-DrUm78_Q36_Mini.img
 
 image-prod: fun
 	@$(call MESSAGE,"Creating disk image")
@@ -113,7 +113,7 @@ image-prod: fun
 	@mkdir -p root tmp
 	@./Recovery/output/host/bin/genimage --loglevel 0 --config "genimage-prod.cfg" --inputpath .
 	@rm -rf root tmp
-	@mv images/sdcard-prod.img images/FunKey-sdcard-prod-DrUm78.img
+	@mv images/sdcard-prod.img images/FunKey-sdcard-prod-DrUm78_Q36_Mini.img
 
 update: fun
 	@$(call MESSAGE,"Creating update file")
@@ -128,7 +128,7 @@ update: fun
 	@cd tmp && \
 	echo sw-description rootfs.ext2.gz update_partition | \
 	tr " " "\n" | \
-	cpio -o -H crc --quiet > ../images/FunKey-rootfs-DrUm78.fwu
+	cpio -o -H crc --quiet > ../images/FunKey-rootfs-DrUm78_Q36_Mini.fwu
 	@rm -rf tmp
 
 defconfig:
