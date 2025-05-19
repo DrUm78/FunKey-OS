@@ -139,7 +139,7 @@ menu_run () {
 			if [ $? -ne 0 ]; then
 			    notif set 0 display 10 "${message}...^        CORRUPTED^        UPDATE FILE"
 			    rm -f "${file}"
-			    notif set 0 "^^^^^        RESTARTING...^^^^^^^^"
+			    notif set 0 "^^^^^         RESTARTING...^^^^^^^^"
 			    normal_mode
 			fi
 		    done
@@ -262,7 +262,7 @@ menu_run () {
 	    ;;
 
 	8)
-	    notif set 0 "^^^^^        RESTARTING...^^^^^^^^"
+	    notif set 0 "^^^^^         RESTARTING...^^^^^^^^"
 	    normal_mode
 	    ;;
 
