@@ -4,7 +4,7 @@
 #
 #############################################################
 
-GMENU2X_VERSION = v1.0.5-funkey-s
+GMENU2X_VERSION = HEAD
 GMENU2X_SITE_METHOD = git
 GMENU2X_SITE = https://github.com/DrUm78/gmenu2x.git
 GMENU2X_LICENSE = GPL-2.0

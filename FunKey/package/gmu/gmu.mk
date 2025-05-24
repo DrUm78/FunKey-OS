@@ -4,10 +4,10 @@
 #
 ################################################################################
 
-GMU_VERSION = v1.0-rg-nano
+GMU_VERSION = HEAD
 GMU_SITE_METHOD = git
 GMU_SITE = https://github.com/DrUm78/gmu.git
-GMU_LICENSE = GPL-2.1+
+GMU_LICENSE = GPL-2.0
 GMU_LICENSE_FILES = LICENSE
 
 GMU_DEPENDENCIES = sdl
