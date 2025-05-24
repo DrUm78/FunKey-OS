@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-CLOCK_VERSION = v1.0-funkey-s
+CLOCK_VERSION = HEAD
 CLOCK_SITE_METHOD = git
 CLOCK_SITE = https://github.com/DrUm78/clock_sdl_app.git
 CLOCK_LICENSE = GPL-2.1+

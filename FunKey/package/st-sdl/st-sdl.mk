@@ -4,10 +4,10 @@
 #
 ################################################################################
 
-ST_SDL_VERSION = v1.0-funkey-s
+ST_SDL_VERSION = HEAD
 ST_SDL_SITE_METHOD = git
 ST_SDL_SITE = https://github.com/DrUm78/st-sdl.git
-ST_SDL_LICENSE = GPL-2.1+
+ST_SDL_LICENSE = MIT/X11
 ST_SDL_LICENSE_FILES = LICENSE
 
 ST_SDL_DEPENDENCIES = sdl
