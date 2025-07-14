@@ -40,7 +40,7 @@ while true; do
 	# Compute stats
 	cpu=$(printf "%.0f\n" $(mpstat -P ALL $UPDATE_PERIOD 1 | tail -1 | awk '{print 100-$12}'))
 	ram_mem=$(printf "%.0f\n" $(free | grep Mem | awk '{print $3/$2 * 100.0}'))
-	temp=$(printf "%.0f" $(printf "(%d*0.1)-144.7" $(i2cget -y -f 0 0x34 0x5E w|awk '{print "0x"substr($0,5,2)substr($0,4,1)}') | bc))
+	ram_swap=$(printf "%.0f\n" $(free | grep Swap | awk '{print $3/$2 * 100.0}'))
 	battery=$(printf "%.0f\n" $(cat /sys/class/power_supply/axp20x-battery/capacity))
 	ip_addr=$(ifconfig usb0 | grep "inet " | awk -F'[: ]+' '{ print $4 }')
 
@@ -50,9 +50,9 @@ while true; do
 	    notif_dirty=0
 	else
 	    if [ "x${ip_addr}" != "x" ]; then
-		notif set 0 "CPU:${cpu} RAM:${ram_mem} TEMP:${temp} BAT:${battery}^IP:${ip_addr}"
+		notif set 0 "CPU:${cpu} RAM:${ram_mem} SWAP:${ram_swap} BAT:${battery}^IP:${ip_addr}"
 	    else
-		notif set 0 "CPU:${cpu} RAM:${ram_mem} TEMP:${temp} BAT:${battery}"
+		notif set 0 "CPU:${cpu} RAM:${ram_mem} SWAP:${ram_swap} BAT:${battery}"
 	    fi
 	fi
     else
