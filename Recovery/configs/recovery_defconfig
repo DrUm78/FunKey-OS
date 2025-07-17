@@ -2,6 +2,7 @@ BR2_arm=y
 BR2_cortex_a7=y
 BR2_ARM_FPU_VFPV4=y
 BR2_DL_DIR="../download"
+BR2_WGET="wget --no-check-certificate --passive-ftp -nd -t 3"
 BR2_CCACHE=y
 BR2_OPTIMIZE_FAST=y
 BR2_SHARED_STATIC_LIBS=y
