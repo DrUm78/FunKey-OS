@@ -13,17 +13,11 @@ COMMANDER_DEPENDENCIES = sdl sdl_ttf sdl_gfx
 COMMANDER_CONF_OPTS = -DCMAKE_BUILD_TYPE=Release -DTARGET_PLATFORM="funkey-s" -DRES_DIR=""
 #COMMANDER_CONF_OPTS += -DWITH_SYSTEM_SDL_GFX=ON -DWITH_SYSTEM_SDL_TTF=ON
 
-define COMMANDER_INSTALL_CMDS
-endef
-
-define COMMANDER_CREATE_OPK
-	$(INSTALL) -d -m 0755 $(TARGET_DIR)/usr/local/share/OPKs/Applications
+define COMMANDER_INSTALL_TARGET_CMDS
+	$(INSTALL) -d -m 0755 $(TARGET_DIR)/usr/bin/commander
 	cd $(@D); \
-	$(HOST_DIR)/usr/bin/mksquashfs \
-		opkg/commander.funkey-s.desktop \
-		opkg/readme.funkey-s.txt \
-		opkg/commander.png \
-		opkg/commander.sh \
+	$(INSTALL) -D -m 0755 -t $(TARGET_DIR)/usr/bin/commander \
+		commander \
 		res/file-image.png \
 		res/file-ipk.png \
 		res/file-is-symlink.png \
@@ -33,11 +27,12 @@ define COMMANDER_CREATE_OPK
 		res/DroidSansFallback.ttf \
 		res/Fiery_Turk.ttf \
 		res/FreeSans.ttf \
-		res/libSDL-1.2.so.0.11.4 \
-		$(TARGET_DIR)/usr/bin/commander \
-		$(TARGET_DIR)/usr/local/share/OPKs/Applications/commander_funkey-s.opk \
-		-all-root -noappend -no-exports -no-xattrs -noappend; \
-	rm -rf $(TARGET_DIR)/usr/bin/commander
+		res/libSDL-1.2.so.0.11.4
+endef
+
+define COMMANDER_CREATE_OPK
+	$(INSTALL) -d -m 0755 $(TARGET_DIR)/usr/local/share/OPKs/Applications
+	$(HOST_DIR)/usr/bin/mksquashfs $(COMMANDER_PKGDIR)/opk $(TARGET_DIR)/usr/local/share/OPKs/Applications/commander_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
 endef
 COMMANDER_POST_INSTALL_TARGET_HOOKS += COMMANDER_CREATE_OPK
 
