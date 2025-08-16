@@ -31,6 +31,7 @@ define GMU_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 0755 -t $(TARGET_DIR)/usr/bin/gmu/themes/dbcompo-large $(@D)/themes/dbcompo-large/*
 	$(INSTALL) -D -m 0755 -t $(TARGET_DIR)/usr/bin/gmu/themes/default-modern-small $(@D)/themes/default-modern-small/*
 	$(INSTALL) -D -m 0755 -t $(TARGET_DIR)/usr/bin/gmu/themes/default-modern-large $(@D)/themes/default-modern-large/*
+	rm -f $(TARGET_DIR)/usr/bin/gmu/gmu.funkey-s.desktop
 endef
 
 define GMU_CREATE_OPK
