@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Commander
+Comment=Two-pane file manager
+Exec=commander.sh
+Icon=commander
+Categories=applications
+X-OD-Manual=readme.funkey-s.txt
