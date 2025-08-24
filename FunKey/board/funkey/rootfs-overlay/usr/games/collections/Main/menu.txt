@@ -1,6 +1,7 @@
 Game Boy
 Game Boy Color
 Game Boy Advance
+Pokemon Mini
 NES
 SNES
 Game Gear
@@ -11,5 +12,8 @@ Atari lynx
 Neo Geo Pocket
 WonderSwan
 PS1
+Final Burn Alpha 2012
+MAME 2000
+PICO-8
 Libretro
 Native games

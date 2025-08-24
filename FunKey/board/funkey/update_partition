@@ -48,7 +48,8 @@ do_postinst()
     cp -r ${root_mount}/usr/local/share/OPKs/* /mnt
 
     # Copy freeware games and other necessary mnt files
-    #unzip -q -o ${root_mount}/usr/local/share/mnt_files.zip -d /mnt/
+    #unzip -q -o ${root_mount}/usr/local/share/freeware_games.zip -d /mnt/
+    unzip -q -o ${root_mount}/usr/local/share/funkey_files.zip -d /mnt/
 
     # Remove previous OPKs for default emulators
     rm /mnt/Emulators/gb_gbc_gnuboy_funkey-s.opk
@@ -74,6 +75,10 @@ do_postinst()
     rm /mnt/Libretro/cores/pcsx_rearmed_libretro.so
     rm /mnt/Libretro/cores/picodrive_libretro.so
     rm /mnt/Libretro/cores/snes9x2005_libretro.so
+    rm /mnt/Libretro/cores/fbalpha2012_libretro.so
+    rm /mnt/Libretro/cores/mame2000_libretro.so
+    rm /mnt/Libretro/cores/fake08_libretro.so
+    rm /mnt/Libretro/cores/pokemini_libretro.so
 
     # Unmount Rootfs
     umount ${root_mount}

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=FBA 2012
+Comment=Final Burn Alpha (0.2.97.29) emulator
+Exec=picoarch /usr/games/fbalpha2012_libretro.so %f
+Icon=fba
+Categories=emulators
+SelectorDir=/mnt/Final Burn Alpha 2012
+SelectorFilter=zip

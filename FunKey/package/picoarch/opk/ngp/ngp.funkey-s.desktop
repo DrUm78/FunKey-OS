@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Neo-Geo
+Name=Neo-Geo Pocket
 Comment=Neo-Geo Pocket emulator
 Icon=ngp
 Exec=/usr/games/launchers/ngp_launch.sh %f
