@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=MAME 2000
+Comment=MAME (0.37b5) emulator
+Exec=picoarch /usr/games/mame2000_libretro.so %f
+Icon=mame
+Categories=emulators
+SelectorDir=/mnt/MAME 2000
+SelectorFilter=zip
