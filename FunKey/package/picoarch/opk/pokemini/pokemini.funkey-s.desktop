@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Pokémon Mini
+Comment=Pokémon Mini emulator
+Icon=pokemini
+Exec=/usr/games/launchers/pokemini_launch.sh %f
+Categories=emulators
+SelectorDir=/mnt/Pokemon Mini
+SelectorFilter=min,zip
