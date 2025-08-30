@@ -203,8 +203,8 @@ copy_files_to_usb_partition () {
     fi
 
     # Copy freeware games and other necessary mnt files
-    unzip -q -o ${root_mount}/usr/local/share/freeware_games.zip -d /mnt/
-    unzip -q -o ${root_mount}/usr/local/share/funkey_files.zip -d /mnt/
+    unzip -q -o /usr/local/share/freeware_games.zip -d /mnt/
+    unzip -q -o /usr/local/share/funkey_files.zip -d /mnt/
 
     # Copy OPKs
     set +f
