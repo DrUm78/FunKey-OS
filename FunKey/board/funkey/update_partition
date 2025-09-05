@@ -64,22 +64,6 @@ do_postinst()
     rm /mnt/Emulators/wonderswan_mednafen_funkey-s.opk
     rm /mnt/Applications/commander-funkey-s.opk
 
-    # Remove Libretro cores from previous location
-    rm /mnt/Libretro/cores/fceumm_libretro.so
-    rm /mnt/Libretro/cores/gambatte_libretro.so
-    rm /mnt/Libretro/cores/gpsp_libretro.so
-    rm /mnt/Libretro/cores/mednafen_lynx_libretro.so
-    rm /mnt/Libretro/cores/mednafen_ngp_libretro.so
-    rm /mnt/Libretro/cores/mednafen_supergrafx_libretro.so
-    rm /mnt/Libretro/cores/mednafen_wswan_libretro.so
-    rm /mnt/Libretro/cores/pcsx_rearmed_libretro.so
-    rm /mnt/Libretro/cores/picodrive_libretro.so
-    rm /mnt/Libretro/cores/snes9x2005_libretro.so
-    rm /mnt/Libretro/cores/fbalpha2012_libretro.so
-    rm /mnt/Libretro/cores/mame2000_libretro.so
-    rm /mnt/Libretro/cores/fake08_libretro.so
-    rm /mnt/Libretro/cores/pokemini_libretro.so
-
     # Unmount Rootfs
     umount ${root_mount}
     if [ $? -ne 0 ]; then
