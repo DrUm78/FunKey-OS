@@ -1,0 +1,20 @@
+diff --git a/libpicofe/menu.c b/libpicofe/menu.c
+index e91f84a..457052e 100644
+--- a/libpicofe/menu.c
++++ b/libpicofe/menu.c
+@@ -947,13 +947,13 @@ static int scandir_cmp(const void *p1, const void *p2)
+ 	if ((p = (*d2)->d_name)[0] == '.' && p[1] == '.' && p[2] == 0)
+ 		return 1;
+ 	if ((*d1)->d_type == (*d2)->d_type)
+-		return alphasort(d1, d2);
++		return strcasecmp((*d1)->d_name, (*d2)->d_name);
+ 	if ((*d1)->d_type == DT_DIR)
+ 		return -1;	// directories before files/links
+ 	if ((*d2)->d_type == DT_DIR)
+ 		return  1;
+ 
+-	return alphasort(d1, d2);
++	return strcasecmp((*d1)->d_name, (*d2)->d_name);
+ }
+ 
+ static const char **filter_exts_internal;
