@@ -1,0 +1,155 @@
+diff --git a/config.c b/config.c
+index beab9a9..e65ad95 100644
+--- a/config.c
++++ b/config.c
+@@ -108,6 +108,16 @@ void config_read(const char* cfg)
+ 		}
+ 
+ 		parse_num_val(config_data[i].val, tmp);
++
++		/* Backward compatibility fix:
++		   scale_size == 3 → replace by 2 (NATIVE) */
++		if (!strcmp(config_data[i].name, "scale_size")) {
++			uint32_t *val = (uint32_t *)config_data[i].val;
++			if (*val == 3) {
++				PA_INFO("config: scale_size=3 (obsolete) -> remapped to 2\n");
++				*val = 2;
++			}
++		}
+ 	}
+ 
+ 	for (size_t i = 0; i < core_options.len; i++) {
+diff --git a/funkey/fk_menu.c b/funkey/fk_menu.c
+index 1983dd9..030cebb 100644
+--- a/funkey/fk_menu.c
++++ b/funkey/fk_menu.c
+@@ -217,9 +217,9 @@ static void read_aspect_ratio(void)
+ 	case SCALE_SIZE_CROP:
+ 		menu_aspect_ratio = ASPECT_RATIOS_TYPE_CROPPED;
+ 		break;
+-	case SCALE_SIZE_NONE:
++	/*case SCALE_SIZE_NONE:
+ 		menu_aspect_ratio = ASPECT_RATIOS_TYPE_NONE;
+-		break;
++		break;*/
+ 	}
+ }
+ 
+@@ -238,10 +238,10 @@ static void update_aspect_ratio(void)
+ 		scale_size = SCALE_SIZE_CROP;
+ 		scale_filter = SCALE_FILTER_SMOOTH;
+ 		break;
+-	case ASPECT_RATIOS_TYPE_NONE:
++	/*case ASPECT_RATIOS_TYPE_NONE:
+ 		scale_size = SCALE_SIZE_NONE;
+ 		scale_filter = SCALE_FILTER_NEAREST;
+-		break;
++		break;*/
+ 	}
+ 	scale_update_scaler();
+ }
+diff --git a/funkey/fk_menu.h b/funkey/fk_menu.h
+index 8b9e7a4..893a9ef 100644
+--- a/funkey/fk_menu.h
++++ b/funkey/fk_menu.h
+@@ -82,9 +82,9 @@ typedef enum{
+ #define ASPECT_RATIOS \
+     /* X(ASPECT_RATIOS_TYPE_MANUAL, "MANUAL ZOOM") */ \
+     X(ASPECT_RATIOS_TYPE_STRETCHED, "STRETCHED") \
+-    X(ASPECT_RATIOS_TYPE_CROPPED, "CROPPED") \
++    X(ASPECT_RATIOS_TYPE_CROPPED, "NATIVE") \
+     X(ASPECT_RATIOS_TYPE_SCALED, "SCALED") \
+-    X(ASPECT_RATIOS_TYPE_NONE, "NONE") \
++    /* X(ASPECT_RATIOS_TYPE_NONE, "NONE") */ \
+     X(NB_ASPECT_RATIOS_TYPES, "")
+ 
+ ////------ Enumeration of the different aspect ratios ------
+diff --git a/main.c b/main.c
+index 5883bee..d0d26f4 100644
+--- a/main.c
++++ b/main.c
+@@ -212,8 +212,8 @@ void set_defaults(void)
+ 	enable_drc = 1;
+ 	use_srm = 0;
+ 	audio_buffer_size = 5;
+-	scale_size = SCALE_SIZE_NONE;
+-	scale_filter = SCALE_FILTER_NEAREST;
++	scale_size = SCALE_SIZE_FULL;
++	scale_filter = SCALE_FILTER_SMOOTH;
+ 
+ 	/* Sets better defaults for small screen */
+ 	if (SCREEN_WIDTH == 240) {
+diff --git a/menu.c b/menu.c
+index 1d68619..4c0cf38 100644
+--- a/menu.c
++++ b/menu.c
+@@ -556,10 +556,10 @@ static const char h_audio_buffer_size[]        =
+ 	"crackling at the cost of delayed sound.";
+ 
+ static const char h_scale_size[]        =
+-	"How to fill the display. Native does\n"
+-	"no stretching. Aspect keeps the correct\n"
+-	"aspect ratio. Full uses the whole\n"
+-	"screen. Crop hides pixels on the sides.";
++	"How to fill the display. Scaled keeps\n"
++	"the correct aspect ratio. Stretched\n"
++	"uses the whole screen. Native does\n"
++	"no stretching.";
+ 
+ static const char h_scale_filter[]        =
+ 	"When stretching, how missing pixels\n"
+@@ -573,7 +573,7 @@ static const char h_use_srm[]        =
+ 	"retroarch saves. Save file compression\n"
+ 	"needs to be off in retroarch.";
+ 
+-static const char *men_scale_size[] = { "Native", "Aspect", "Full", "Crop", NULL};
++static const char *men_scale_size[] = { "Scaled", "Stretched", "Native", NULL};
+ #endif
+ 
+ static const char *men_scale_filter[] = { "Nearest", "Sharp", "Smooth", NULL};
+diff --git a/scale.c b/scale.c
+index 5857589..a7186bf 100644
+--- a/scale.c
++++ b/scale.c
+@@ -479,8 +487,8 @@ static void scale_select_scaler(unsigned w, unsigned h, size_t pitch) {
+ 		dst_w = SCREEN_WIDTH;
+ 		dst_h = SCREEN_HEIGHT;
+ 		dst_offs = 0;
+-	} else if (scale_size == SCALE_SIZE_ASPECT ||
+-	           (scale_size == SCALE_SIZE_NONE && (w > SCREEN_WIDTH || h > SCREEN_HEIGHT))) {
++	} else if (scale_size == SCALE_SIZE_ASPECT/* ||
++	           (scale_size == SCALE_SIZE_NONE && (w > SCREEN_WIDTH || h > SCREEN_HEIGHT))*/) {
+ 		dst_w = SCREEN_WIDTH;
+ 		dst_h = SCREEN_WIDTH / current_aspect_ratio + 0.5;
+ 		dst_offs = ((SCREEN_HEIGHT-dst_h)/2) * SCREEN_PITCH;
+@@ -490,7 +498,7 @@ static void scale_select_scaler(unsigned w, unsigned h, size_t pitch) {
+ 			dst_h = SCREEN_HEIGHT;
+ 			dst_offs = ((SCREEN_WIDTH-dst_w)/2) * SCREEN_BPP;
+ 		}
+-	} else if (scale_size == SCALE_SIZE_NONE) {
++	/*} else if (scale_size == SCALE_SIZE_NONE) {
+ 		unsigned dst_x = ((SCREEN_WIDTH - w) * SCREEN_BPP / 2);
+ 		unsigned dst_y = ((SCREEN_HEIGHT - h) / 2);
+ 		dst_offs = dst_y * SCREEN_PITCH + dst_x;
+@@ -501,7 +509,7 @@ static void scale_select_scaler(unsigned w, unsigned h, size_t pitch) {
+ 			scaler = scale_1x;
+ 		}
+ 
+-		return;
++		return;*/
+ 	}
+ 
+ 	if (!scaler && w == 160 && h == 144) {
+diff --git a/scale.h b/scale.h
+index fe02d92..fb0ce14 100644
+--- a/scale.h
++++ b/scale.h
+@@ -18,7 +18,7 @@
+ #define SCREEN_PITCH (SCREEN_BPP * SCREEN_WIDTH)
+ 
+ enum scale_size {
+-	SCALE_SIZE_NONE,
++	//SCALE_SIZE_NONE,
+ 	SCALE_SIZE_ASPECT,
+ 	SCALE_SIZE_FULL,
+ 	SCALE_SIZE_CROP,
