@@ -6,7 +6,7 @@
 
 PICOARCH_VERSION = HEAD
 PICOARCH_SITE_METHOD = git
-PICOARCH_SITE = https://git.crowdedwood.com/picoarch
+PICOARCH_SITE = https://github.com/DrUm78/picoarch.git
 PICOARCH_LICENSE = GPL-2+, LGPL-2.1+, MAME
 PICOARCH_LICENSE_FILES = LICENSE
 
