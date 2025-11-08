@@ -2,7 +2,7 @@
 
 # Launch the process in background, record the PID into a file, wait
 # for the process to terminate and erase the recorded PID
-picoarch /usr/games/mednafen_supergrafx_libretro.so "$1"&
+picoarch /usr/games/mednafen_pce_fast_libretro.so "$1"&
 pid record $!
 wait $!
 pid erase
