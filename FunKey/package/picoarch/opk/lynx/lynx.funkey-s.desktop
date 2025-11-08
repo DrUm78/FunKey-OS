@@ -5,4 +5,4 @@ Icon=lynx
 Exec=/usr/games/launchers/lynx_launch.sh %f
 Categories=emulators
 SelectorDir=/mnt/Atari lynx
-SelectorFilter=lnx,lyx,o,zip
+SelectorFilter=lnx,lyx,bll,o,zip
