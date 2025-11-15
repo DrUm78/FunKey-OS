@@ -20,6 +20,9 @@ PICOARCH_CFLAGS += -DFUNKEY_S -Ofast -DNDEBUG  -D_LARGEFILE_SOURCE -D_LARGEFILE6
 PICOARCH_CFLAGS += -Wall -fdata-sections -ffunction-sections -flto
 PICOARCH_CFLAGS += -I./ -I./libretro-common/include/
 
+PICOARCH_GIT_REVISION ?= $(shell cut -c1-7 "$(@D)/../../../../download/picoarch/git/.git/FETCH_HEAD")
+PICOARCH_CFLAGS += -DREVISION=\"$(PICOARCH_GIT_REVISION)\"
+
 PICOARCH_LIBS += $(PICOARCH_SDL_LIBS)
 PICOARCH_LIBS += -lc -ldl -lgcc -lm -lSDL -lasound -lpng -lz -Wl,--gc-sections -flto -lSDL_image -lSDL_ttf
 
